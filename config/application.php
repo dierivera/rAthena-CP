@@ -3,7 +3,7 @@
 // the default, and should be changed as needed.
 return array(
 	'ServerAddress'				=> 'localhost',				// This value is the hostname:port under which Flux runs. (e.g., example.com or example.com:80)
-	'BaseURI'					=> '/',						// The base URI is the base web root on which your application lies.
+	'BaseURI'					=> '/testing',						// The base URI is the base web root on which your application lies.
 	'InstallerPassword'			=> 'Ragnarok',		// Installer/updater password.
 	'RequireOwnership'			=> true,					// Require the executing user to be owner of the FLUX_ROOT/data/ directory tree? (Better for security)
 															// WARNING: This will be mostly IGNORED on non-POSIX-compliant OSes (e.g. Windows).
@@ -230,13 +230,14 @@ return array(
 	// their login status.
 	'MenuItems'		=> array(
 		'MainMenuLabel'		=> array(
-			'HomeLabel'			=> array('module' => 'main'),
+			//'HomeLabel'			=> array('module' => 'main'),
+			'HomeLabel'			=> array('module' => 'server', 'action' => 'status'),
 			//'ForumLabel'		=> array('exturl' => 'http://www.fluxro.com/community'),	// External forum link
 			//'ForumLabel'		=> array('module' => 'forums'), 						// Built-in forum link
 			'NewsLabel'			=> array('module' => 'news'),
 			// Sample items for pages function.
 			'DownloadsLabel'		=> array('module' => 'pages','action'=>'content&path=downloads'),
-			'RulesLabel'			=> array('module' => 'pages','action'=>'content&path=rules'),
+			//'RulesLabel'			=> array('module' => 'pages','action'=>'content&path=rules'),
 			// End sample items for pages function.
 		),
 		'AccountLabel'		=> array(
@@ -247,13 +248,13 @@ return array(
 			'ServiceDeskLabel'	=> array('module' => 'servicedesk'),
 			'LogoutTitle'		=> array('module' => 'account', 'action' => 'logout'),
 		),
-		'DonationsLabel'		=> array(
-			'PurchaseLabel'		=> array('module' => 'purchase'),
-			'DonateLabel'		=> array('module' => 'donate'),
-		),
+		//'DonationsLabel'		=> array(
+		//	'PurchaseLabel'		=> array('module' => 'purchase'),
+		//	'DonateLabel'		=> array('module' => 'donate'),
+		//),
 		'InformationLabel'	=> array(
 			'ServerInfoLabel'	=> array('module' => 'server', 'action' => 'info'),
-			'ServerStatusLabel'	=> array('module' => 'server', 'action' => 'status'),
+			//'ServerStatusLabel'	=> array('module' => 'server', 'action' => 'status'),
 			'WoeHoursLabel'		=> array('module' => 'woe'),
 			'CastlesLabel'		=> array('module' => 'castle'),
 			'WhosOnlineLabel'	=> array('module' => 'character', 'action' => 'online'),
