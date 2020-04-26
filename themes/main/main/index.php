@@ -4,14 +4,6 @@ if (!defined('FLUX_ROOT')) exit;
 
 <div class="columns is-multiline">
 
-	<div class="column is-8">
-		<?php include $this->themePath('main/slideshow.php', true) ?>
-	</div>
-
-	<div class="column is-4">
-		<?php include $this->themePath('main/woe.php', true) ?>
-	</div>
-
 	<div class="column is-4">
 		<?php if ($session->isLoggedIn()) : ?>
 			<div class="columns">
@@ -30,6 +22,14 @@ if (!defined('FLUX_ROOT')) exit;
 
 	<div class="column is-8">
 		<?php include $this->themePath('main/announcement.php', true) ?>
+	</div>
+
+	<div class="column is-8">
+		<?php include $this->themePath('main/slideshow.php', true) ?>
+	</div>
+
+	<div class="column is-4">
+		<?php include $this->themePath('main/woe.php', true) ?>
 	</div>
 
 </div>
