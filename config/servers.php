@@ -36,14 +36,14 @@ return array(
 				// -- It specifies the encoding to convert your MySQL data to on the website (most likely needs to be utf8)
 			'Hostname'   => '127.0.0.1',
 			'Username'   => 'admin',
-			'Password'   => 'ragnarok',
-			'Database'   => 'ragnarok',
+			'Password'   => 'Ragnarok',
+			'Database'   => 'log',
 			'Persistent' => true,
 			'Timezone'   => null // Possible values is as described in the comment in DbConfig.
 		),
 		// Login server configuration.
 		'LoginServer'    => array(
-			'Address'  => '127.0.0.1',
+			'Address'  => '18.216.77.40',
 			'Port'     => 6900,
 			'UseMD5'   => false,
 			'NoCase'   => true, // rA account case-sensitivity; Default: Case-INsensitive (true).
@@ -83,11 +83,11 @@ return array(
 					'MvpItem'     => 100
 				),
 				'CharServer'      => array(
-					'Address'     => '127.0.0.1',
+					'Address'     => '18.216.77.40',
 					'Port'        => 6121
 				),
 				'MapServer'       => array(
-					'Address'     => '127.0.0.1',
+					'Address'     => '18.216.77.40',
 					'Port'        => 5121
 				),
 				// -- WoE days and times --
