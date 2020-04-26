@@ -230,8 +230,8 @@ return array(
 	// their login status.
 	'MenuItems'		=> array(
 		'MainMenuLabel'		=> array(
-			//'HomeLabel'			=> array('module' => 'main'),
-			'HomeLabel'			=> array('module' => 'server', 'action' => 'status'),
+			'HomeLabel'			=> array('module' => 'main'),
+			//'HomeLabel'			=> array('module' => 'server', 'action' => 'status'),
 			//'ForumLabel'		=> array('exturl' => 'http://www.fluxro.com/community'),	// External forum link
 			//'ForumLabel'		=> array('module' => 'forums'), 						// Built-in forum link
 			'NewsLabel'			=> array('module' => 'news'),
@@ -254,7 +254,7 @@ return array(
 		//),
 		'InformationLabel'	=> array(
 			'ServerInfoLabel'	=> array('module' => 'server', 'action' => 'info'),
-			//'ServerStatusLabel'	=> array('module' => 'server', 'action' => 'status'),
+			'ServerStatusLabel'	=> array('module' => 'server', 'action' => 'status'),
 			'WoeHoursLabel'		=> array('module' => 'woe'),
 			'CastlesLabel'		=> array('module' => 'castle'),
 			'WhosOnlineLabel'	=> array('module' => 'character', 'action' => 'online'),
