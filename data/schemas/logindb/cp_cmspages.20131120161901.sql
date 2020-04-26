@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS `cp_cmspages` (
 
 INSERT INTO `cp_cmspages` (`id`, `path`, `title`, `body`, `modified`) VALUES
 (1, 'rules', 'Rules', 'This is a rules page.', '2013-11-20 00:00:00'),
-(2, 'downloads', 'Downloads', 'This is a download page.', '2017-07-20 00:00:00');
+(2, 'downloads', 'Downloads', 'Client can be downloaded from <a>https://drive.google.com/open?id=1_8yRsahDqGBQU65ULo_8tsAiK_oUoL0R</a>', '2017-07-20 00:00:00');
