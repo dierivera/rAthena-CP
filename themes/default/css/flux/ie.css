@@ -1,18 +1,17 @@
-/*********************************************
- ** Stylesheet file for default Flux theme. **
- *********************************************/
-
-
-#main, #user_sidebar {
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50ffffff', endColorstr='#50ffffff'); 
+input[type=text], input[type=password], textarea {
+	font-weight: bold;
 }
 
-#topbar, #toppanel{
-	border-bottom: 2px solid grey;
+select {
+	font-size: 8pt;
+	border: 5px solid #000;
 }
 
-.loginbox-admin-menu {
-	background-color: #E3EBFF;
-	border-bottom: 1px solid #ccc;
+#logo {
+	display: block;
 }
 
+.generic-form-table td input[type=checkbox] {
+	display: inline-block;
+	margin-top: 3px;
+}

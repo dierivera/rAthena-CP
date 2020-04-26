@@ -1,0 +1,18 @@
+/*********************************************
+ ** Stylesheet file for default Flux theme. **
+ *********************************************/
+
+
+#main, #user_sidebar {
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50ffffff', endColorstr='#50ffffff'); 
+}
+
+#topbar, #toppanel{
+	border-bottom: 2px solid grey;
+}
+
+.loginbox-admin-menu {
+	background-color: #E3EBFF;
+	border-bottom: 1px solid #ccc;
+}
+
