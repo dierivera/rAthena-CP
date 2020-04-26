@@ -76,80 +76,76 @@
 </form>
 <?php if ($monsters): ?>
 <?php echo $paginator->infoText() ?>
-<table class="table is-responsive">
-	<thead>
-		<tr>
-			<th scope="col"><?php echo $paginator->sortableColumn('monster_id', 'Monster ID') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('kro_name', 'kRO Name') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('iro_name', 'iRO Name') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('level', 'Level') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('hp', 'HP') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('size', 'Size') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('race', 'Race') ?></th>
-			<th scope="col">Element</th>
-			<th scope="col"><?php echo $paginator->sortableColumn('exp', 'Base EXP') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('jexp', 'Job EXP') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('dropcard_id', 'Card ID') ?></th>
-			<th scope="col"><?php echo $paginator->sortableColumn('origin_table', 'Custom') ?></th>
-		</tr>
-	</thead>
-	<tbody>
+<table class="horizontal-table">
+	<tr>
+		<th><?php echo $paginator->sortableColumn('monster_id', 'Monster ID') ?></th>
+		<th><?php echo $paginator->sortableColumn('kro_name', 'kRO Name') ?></th>
+		<th><?php echo $paginator->sortableColumn('iro_name', 'iRO Name') ?></th>
+		<th><?php echo $paginator->sortableColumn('level', 'Level') ?></th>
+		<th><?php echo $paginator->sortableColumn('hp', 'HP') ?></th>
+		<th><?php echo $paginator->sortableColumn('size', 'Size') ?></th>
+		<th><?php echo $paginator->sortableColumn('race', 'Race') ?></th>
+		<th>Element</th>
+		<th><?php echo $paginator->sortableColumn('exp', 'Base EXP') ?></th>
+		<th><?php echo $paginator->sortableColumn('jexp', 'Job EXP') ?></th>
+		<th><?php echo $paginator->sortableColumn('dropcard_id', 'Card ID') ?></th>
+		<th><?php echo $paginator->sortableColumn('origin_table', 'Custom') ?></th>
+	</tr>
 	<?php foreach ($monsters as $monster): ?>
-		<tr>
-			<td data-label="Monster ID">
-				<?php if ($auth->actionAllowed('monster', 'view')): ?>
-					<?php echo $this->linkToMonster($monster->monster_id, $monster->monster_id) ?>
-				<?php else: ?>
-					<?php echo htmlspecialchars($monster->monster_id) ?>
-				<?php endif ?>
-			</td>
-			<td  data-label="kRO Name">
-				<?php if ($monster->mvp_exp): ?>
-				<span class="mvp">MVP!</span>
-				<?php endif ?>
-				<?php echo htmlspecialchars($monster->kro_name) ?>
-			</td>
-			<td data-label="iRO Name"><?php echo htmlspecialchars($monster->iro_name) ?></td>
-			<td data-label="Level"><?php echo number_format($monster->level) ?></td>
-			<td data-label="HP"><?php echo number_format($monster->hp) ?></td>
-			<td data-label="Size">
-				<?php if ($size=Flux::monsterSizeName($monster->size)): ?>
-					<?php echo htmlspecialchars($size) ?>
-				<?php else: ?>
-					<span class="not-applicable">Unknown</span>
-				<?php endif ?>
-			</td>
-			<td data-label="Race">
-				<?php if ($race=Flux::monsterRaceName($monster->race)): ?>
-					<?php echo htmlspecialchars($race) ?>
-				<?php else: ?>
-					<span class="not-applicable">Unknown</span>
-				<?php endif ?>
-			</td>
-			<td data-label="Element"><?php echo Flux::elementName($monster->element_type) ?> (Lv <?php echo floor($monster->element_level) ?>)</td>
-			<td data-label="Base EXP"><?php echo number_format($monster->exp * $server->expRates['Base'] / 100) ?></td>
-			<td data-label="Job EXP"><?php echo number_format($monster->jexp * $server->expRates['Job'] / 100) ?></td>
-			<?php if ($monster->dropcard_id): ?>
-			<td data-label="Card ID">
+	<tr>
+		<td align="right">
+			<?php if ($auth->actionAllowed('monster', 'view')): ?>
+				<?php echo $this->linkToMonster($monster->monster_id, $monster->monster_id) ?>
+			<?php else: ?>
+				<?php echo htmlspecialchars($monster->monster_id) ?>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if ($monster->mvp_exp): ?>
+			<span class="mvp">MVP!</span>
+			<?php endif ?>
+			<?php echo htmlspecialchars($monster->kro_name) ?>
+		</td>
+		<td><?php echo htmlspecialchars($monster->iro_name) ?></td>
+		<td><?php echo number_format($monster->level) ?></td>
+		<td><?php echo number_format($monster->hp) ?></td>
+		<td>
+			<?php if ($size=Flux::monsterSizeName($monster->size)): ?>
+				<?php echo htmlspecialchars($size) ?>
+			<?php else: ?>
+				<span class="not-applicable">Unknown</span>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if ($race=Flux::monsterRaceName($monster->race)): ?>
+				<?php echo htmlspecialchars($race) ?>
+			<?php else: ?>
+				<span class="not-applicable">Unknown</span>
+			<?php endif ?>
+		</td>
+		<td><?php echo Flux::elementName($monster->element_type) ?> (Lv <?php echo floor($monster->element_level) ?>)</td>
+		<td><?php echo number_format($monster->exp * $server->expRates['Base'] / 100) ?></td>
+		<td><?php echo number_format($monster->jexp * $server->expRates['Job'] / 100) ?></td>
+		<?php if ($monster->dropcard_id): ?>
+			<td>
 				<?php if ($auth->actionAllowed('item', 'view')): ?>
 					<?php echo $this->linkToItem($monster->dropcard_id, $monster->dropcard_id) ?>
 				<?php else: ?>
 					<?php echo htmlspecialchars($monster->dropcard_id) ?>
 				<?php endif ?>
 			</td>
+		<?php else: ?>
+			<td><span class="not-applicable">None</span></td>
+		<?php endif ?>
+		<td>
+			<?php if (preg_match('/mob_db2$/', $monster->origin_table)): ?>
+				Yes
 			<?php else: ?>
-				<td><span class="not-applicable">None</span></td>
+				No
 			<?php endif ?>
-			<td data-label="Custom">
-				<?php if (preg_match('/mob_db2$/', $monster->origin_table)): ?>
-					Yes
-				<?php else: ?>
-					No
-				<?php endif ?>
-			</td>
-		</tr>
+		</td>
+	</tr>
 	<?php endforeach ?>
-	</tbody>
 </table>
 <?php echo $paginator->getHTML() ?>
 <?php else: ?>

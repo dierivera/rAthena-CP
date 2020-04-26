@@ -138,88 +138,92 @@
 </form>
 <?php if ($items): ?>
 <?php echo $paginator->infoText() ?>
-<table class="horizontal-table">
-	<tr>
-		<th><?php echo $paginator->sortableColumn('item_id', 'Item ID') ?></th>
-		<th colspan="2"><?php echo $paginator->sortableColumn('name', 'Name') ?></th>
-		<th>Type</th>
-		<th>Equip Locations</th>
-		<th><?php echo $paginator->sortableColumn('price_buy', 'NPC Buy') ?></th>
-		<th><?php echo $paginator->sortableColumn('price_sell', 'NPC Sell') ?></th>
-		<th><?php echo $paginator->sortableColumn('weight', 'Weight') ?></th>
-		<th><?php echo $paginator->sortableColumn('attack', 'Attack') ?></th>
-		<?php if($server->isRenewal): ?>
-		<th><?php echo $paginator->sortableColumn('matk', 'MATK') ?></th>
-		<?php endif ?>
-		<th><?php echo $paginator->sortableColumn('defense', 'Defense') ?></th>
-		<th><?php echo $paginator->sortableColumn('range', 'Range') ?></th>
-		<th><?php echo $paginator->sortableColumn('slots', 'Slots') ?></th>
-		<th><?php echo $paginator->sortableColumn('refineable', 'Refineable') ?></th>
-		<th><?php echo $paginator->sortableColumn('cost', 'For Sale') ?></th>
-		<th><?php echo $paginator->sortableColumn('origin_table', 'Custom') ?></th>
-	</tr>
+<table class="table is-responsive">
+	<thead>
+		<tr>
+			<th scope="col"><?php echo $paginator->sortableColumn('item_id', 'Item ID') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('name', 'Name') ?></th>
+			<th scope="col">Type</th>
+			<th scope="col">Equip Locations</th>
+			<th scope="col"><?php echo $paginator->sortableColumn('price_buy', 'NPC Buy') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('price_sell', 'NPC Sell') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('weight', 'Weight') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('attack', 'Attack') ?></th>
+			<?php if($server->isRenewal): ?>
+			<th scope="col"><?php echo $paginator->sortableColumn('matk', 'MATK') ?></th>
+			<?php endif ?>
+			<th scope="col"><?php echo $paginator->sortableColumn('defense', 'Defense') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('range', 'Range') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('slots', 'Slots') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('refineable', 'Refineable') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('cost', 'For Sale') ?></th>
+			<th scope="col"><?php echo $paginator->sortableColumn('origin_table', 'Custom') ?></th>
+		</tr>
+	</thead>
+	<tbody>
 	<?php foreach ($items as $item): ?>
-	<tr>
-		<td align="right">
-			<?php if ($auth->actionAllowed('item', 'view')): ?>
-				<?php echo $this->linkToItem($item->item_id, $item->item_id) ?>
+		<tr>
+			<td data-label="Item ID">
+				<?php if ($auth->actionAllowed('item', 'view')): ?>
+					<?php echo $this->linkToItem($item->item_id, $item->item_id) ?>
+				<?php else: ?>
+					<?php echo htmlspecialchars($item->item_id) ?>
+				<?php endif ?>
+			</td>
+			<?php if ($icon=$this->iconImage($item->item_id)): ?>
+				<td data-label="Name"><img src="<?php echo htmlspecialchars($icon) ?>?nocache=<?php echo rand() ?>" /></td>
+				<td data-label="Icon"><?php echo htmlspecialchars($item->name) ?></td>
 			<?php else: ?>
-				<?php echo htmlspecialchars($item->item_id) ?>
+				<td data-label="Name"><?php echo htmlspecialchars($item->name) ?></td>
 			<?php endif ?>
-		</td>
-		<?php if ($icon=$this->iconImage($item->item_id)): ?>
-			<td width="24"><img src="<?php echo htmlspecialchars($icon) ?>?nocache=<?php echo rand() ?>" /></td>
-			<td><?php echo htmlspecialchars($item->name) ?></td>
-		<?php else: ?>
-			<td colspan="2"><?php echo htmlspecialchars($item->name) ?></td>
-		<?php endif ?>
-		<td>
-			<?php if ($type=$this->itemTypeText($item->type, $item->view)): ?>
-				<?php echo htmlspecialchars($type) ?>
-			<?php else: ?>
-				<span class="not-applicable">Unknown<?php echo " (".$item->type.")" ?></span>
+			<td data-label="Type">
+				<?php if ($type=$this->itemTypeText($item->type, $item->view)): ?>
+					<?php echo htmlspecialchars($type) ?>
+				<?php else: ?>
+					<span class="not-applicable">Unknown<?php echo " (".$item->type.")" ?></span>
+				<?php endif ?>
+			</td>
+			<td data-label="Equip Locations">
+				<?php if ($loc=$this->equipLocationCombinationText($item->equip_locations)): ?>
+					<?php echo htmlspecialchars($loc) ?>
+				<?php else: ?>
+					<span class="not-applicable">Unknown<?php echo " (".$item->equip_locations.")" ?></span>
+				<?php endif ?>
+			</td>
+			<td data-label="NPC Buy"><?php echo number_format((int)$item->price_buy) ?></td>
+			<td data-label="NPC Sell"><?php echo number_format((int)$item->price_sell) ?></td>
+			<td data-label="Weight"><?php echo round($item->weight, 1) ?></td>
+			<td data-label="Attack"><?php echo number_format((int)$item->attack) ?></td>
+			<?php if($server->isRenewal): ?>
+				<td data-label="MATK"><?php echo number_format((int)$item->matk) ?></td>
 			<?php endif ?>
-		</td>
-		<td>
-			<?php if ($loc=$this->equipLocationCombinationText($item->equip_locations)): ?>
-				<?php echo htmlspecialchars($loc) ?>
-			<?php else: ?>
-				<span class="not-applicable">Unknown<?php echo " (".$item->equip_locations.")" ?></span>
-			<?php endif ?>
-		</td>
-		<td><?php echo number_format((int)$item->price_buy) ?></td>
-		<td><?php echo number_format((int)$item->price_sell) ?></td>
-		<td><?php echo round($item->weight, 1) ?></td>
-		<td><?php echo number_format((int)$item->attack) ?></td>
-		<?php if($server->isRenewal): ?>
-			<td><?php echo number_format((int)$item->matk) ?></td>
-		<?php endif ?>
-		<td><?php echo number_format((int)$item->defense) ?></td>
-		<td><?php echo number_format((int)$item->range) ?></td>
-		<td><?php echo number_format((int)$item->slots) ?></td>
-		<td>
-			<?php if ($item->refineable): ?>
-				<span class="refineable yes">Yes</span>
-			<?php else: ?>
-				<span class="refineable no">No</span>
-			<?php endif ?>
-		</td>
-		<td>
-			<?php if ($item->cost): ?>
-				<span class="for-sale yes"><a href="<?php echo $this->url('purchase') ?>" title="Go to Item Shop">Yes</a></span>
-			<?php else: ?>
-				<span class="for-sale no">No</span>
-			<?php endif ?>
-		</td>
-		<td>
-			<?php if (preg_match('/item_db2$/', $item->origin_table)): ?>
-				Yes
-			<?php else: ?>
-				No
-			<?php endif ?>
-		</td>
-	</tr>
+			<td data-label="Defense"><?php echo number_format((int)$item->defense) ?></td>
+			<td data-label="Range"><?php echo number_format((int)$item->range) ?></td>
+			<td data-label="Slots"><?php echo number_format((int)$item->slots) ?></td>
+			<td data-label="Refineable">
+				<?php if ($item->refineable): ?>
+					<span class="refineable yes">Yes</span>
+				<?php else: ?>
+					<span class="refineable no">No</span>
+				<?php endif ?>
+			</td>
+			<td data-label="For Sale">
+				<?php if ($item->cost): ?>
+					<span class="for-sale yes"><a href="<?php echo $this->url('purchase') ?>" title="Go to Item Shop">Yes</a></span>
+				<?php else: ?>
+					<span class="for-sale no">No</span>
+				<?php endif ?>
+			</td>
+			<td data-label="Custom">
+				<?php if (preg_match('/item_db2$/', $item->origin_table)): ?>
+					Yes
+				<?php else: ?>
+					No
+				<?php endif ?>
+			</td>
+		</tr>
 	<?php endforeach ?>
+	</tbody>
 </table>
 <?php echo $paginator->getHTML() ?>
 <?php else: ?>
