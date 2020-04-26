@@ -1,17 +1,18 @@
-input[type=text], input[type=password], textarea {
-	font-weight: bold;
+/*********************************************
+ ** Stylesheet file for default Flux theme. **
+ *********************************************/
+
+
+#main, #user_sidebar {
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#50ffffff', endColorstr='#50ffffff'); 
 }
 
-select {
-	font-size: 8pt;
-	border: 5px solid #000;
+#topbar, #toppanel{
+	border-bottom: 2px solid grey;
 }
 
-#logo {
-	display: block;
+.loginbox-admin-menu {
+	background-color: #E3EBFF;
+	border-bottom: 1px solid #ccc;
 }
 
-.generic-form-table td input[type=checkbox] {
-	display: inline-block;
-	margin-top: 3px;
-}
