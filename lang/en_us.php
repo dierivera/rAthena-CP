@@ -99,7 +99,7 @@ return array(
     'BuyingstoreInfoLabel'        => 'Buyingstore Info',
     'ItemDatabaseLabel'            => 'Item Database',
     'MobDatabaseLabel'            => 'Mob Database',
-    'JoinUsInFacebookLabel'            => 'Join us on Facebook!',
+    'JoinUsInFacebookLabel'            => 'Siguenos en Twitter!',
     'RateUsOnRMSLabel'            => 'Rate us on RMS!',
 	
 	// Module: account

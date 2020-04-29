@@ -263,10 +263,10 @@ return array(
 			'VendingInfoLabel'	=> array('module' => 'vending'),
 			'BuyingstoreInfoLabel'	=> array('module' => 'buyingstore'),
 		),
-		'DatabaseLabel'		=> array(
+		/*'DatabaseLabel'		=> array(
 			'ItemDatabaseLabel'	=> array('module' => 'item'),
 			'MobDatabaseLabel'	=> array('module' => 'monster'),
-		),
+		),*/
 		'SocialLabel'		=> array(
 			'JoinUsInFacebookLabel'	=> array('exturl' => 'https://twitter.com/MasalaKingdom'),
 			'RateUsOnRMSLabel'		=> array('exturl' => '<link_to_RMS>'),
